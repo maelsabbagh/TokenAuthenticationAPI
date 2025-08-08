@@ -13,11 +13,22 @@ namespace TokenAuthenticationAPI.Controllers
         [HttpGet]
         public IActionResult WelcomeMessage([FromQuery] string name)
         {
+
+           
+
             string message = $"Hello {name}";
             return Ok(new HelloDTO 
             {
                 message=message
             });
+        }
+
+        [HttpGet("claims")]
+        public IActionResult claims()
+        {
+            // get from claims set in tokenservice
+            var city = User.Claims.FirstOrDefault(c => c.Type == "city");
+            return Ok(city.ToString());
         }
     }
 
