@@ -31,7 +31,8 @@ namespace TokenAuthenticationAPI.Services
             claimsForToken.Add(new Claim("given_name", user.FirstName));
             claimsForToken.Add(new Claim("family_name", user.LastName));
             claimsForToken.Add(new Claim("city", user.City));
-
+            claimsForToken.Add(new Claim("testType", "Mohamed is adding a new test Type"));
+            
             var jwtsSecurityToken = new JwtSecurityToken(
                 _configuration["Authentication:Issuer"],
                 _configuration["Authentication:Audience"],

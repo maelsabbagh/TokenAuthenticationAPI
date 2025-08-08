@@ -30,6 +30,12 @@ namespace TokenAuthenticationAPI.Controllers
             var city = User.Claims.FirstOrDefault(c => c.Type == "city");
             return Ok(city.ToString());
         }
+        [HttpGet("test-type")]
+        public IActionResult testType()
+        {
+            var testType = User.Claims.FirstOrDefault(c => c.Type == "testType").ToString();
+            return Ok(testType); // return Mohamed is adding a new test Type
+        }
     }
 
     public class HelloDTO
