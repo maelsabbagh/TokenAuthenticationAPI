@@ -9,14 +9,29 @@ namespace TokenAuthenticationAPI.Services
         {
             if (string.IsNullOrEmpty(authenticationRequestBody.UserName) || string.IsNullOrEmpty(authenticationRequestBody.Password)) return null;
 
-            return new User()
+            if (authenticationRequestBody.UserName == "mohamed")
             {
-                UserId = 1,
-                UserName = authenticationRequestBody.UserName ?? "",
-                FirstName = "Mohamed",
-                LastName = "Elsabbagh",
-                City = "Cairo"
-            };
+                return new User()
+                {
+                    UserId = 1,
+                    UserName = authenticationRequestBody.UserName ?? "",
+                    FirstName = "Mohamed",
+                    LastName = "Elsabbagh",
+                    City = "Cairo"
+                };
+            }
+
+            else
+            {
+                return new User()
+                {
+                    UserId = 2,
+                    UserName = authenticationRequestBody.UserName ?? "",
+                    FirstName = "Mohamed",
+                    LastName = "Elsabbagh",
+                    City = "Alex"
+                };
+            }
         }
     }
 }

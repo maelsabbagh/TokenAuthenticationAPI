@@ -29,6 +29,15 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("MustBeFromCairo", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("city", "Cairo");
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
